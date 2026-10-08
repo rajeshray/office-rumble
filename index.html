@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24183f">
+  <meta name="description" content="Two colleagues. One keyboard. A ridiculous local fighting game with your own webcam faces.">
+  <title>Office Rumble — Bring your game face.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ddff62'/%3E%3Cpath d='M38 6 14 36h16l-4 22 24-32H34z' fill='%2324183f'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Office Rumble home"><span class="brand-mark">ϟ</span> BREAKROOM <span class="brand-light">ARCADE</span></a>
+      <div class="top-actions"><span class="local-label">2 PLAYERS · 1 KEYBOARD</span><button id="sound" class="icon-button" aria-pressed="false" title="Toggle game sound">Sound off</button></div>
+    </header>
+    <section class="title-row">
+      <div><div class="eyebrow">AFTER-HOURS CHAMPIONSHIP</div><h1>OFFICE <span>RUMBLE</span><span class="title-star" aria-hidden="true">✳</span></h1></div>
+      <p>Bring your game face.<br>Leave your dignity at your desk.</p>
+    </section>
+    <section class="game-card" aria-label="Two player fighting arena">
+      <div class="arena-bar"><span><span class="live-dot"></span> THE BREAKROOM</span><span id="match-label">MAXIMUM UNPROFESSIONALISM</span><button id="pause" class="text-button" disabled>Pause <kbd>Esc</kbd></button></div>
+      <div class="arena" id="arena">
+        <canvas id="game" width="1280" height="550" tabindex="0" aria-label="Fighting arena. Player one: W jump, A and D move, S block, F punch. Player two: arrow keys move, jump and block, Enter punch. G launches coffee for player one. Right Shift launches emails for player two. Hold S or Down to guard; tap to parry. E or Period dodges."></canvas>
+        <div class="hud" aria-hidden="true">
+          <div class="fighter-hud"><div class="hud-label"><b id="hud-name-0">THE OVERACHIEVER</b><span>P1</span></div><div class="health-track"><div id="health-0" class="health-fill mint"></div></div><div class="hud-small"><span id="health-text-0">100 HP</span><span id="wins-0">0 WINS</span></div><div class="chaos-hud" id="chaos-0"><span id="chaos-label-0">CHAOS 50%</span><div class="chaos-track"><i id="chaos-fill-0"></i></div></div><div class="guard-hud"><span id="guard-label-0">GUARD 100%</span><div class="guard-track"><i id="guard-fill-0"></i></div></div></div>
+          <div class="timer"><b id="timer">60</b><span>SECONDS</span></div>
+          <div class="fighter-hud right"><div class="hud-label"><span>P2</span><b id="hud-name-1">THE REPLY-ALL</b></div><div class="health-track"><div id="health-1" class="health-fill pink"></div></div><div class="hud-small"><span id="wins-1">0 WINS</span><span id="health-text-1">100 HP</span></div><div class="chaos-hud" id="chaos-1"><span id="chaos-label-1">CHAOS 50%</span><div class="chaos-track"><i id="chaos-fill-1"></i></div></div><div class="guard-hud"><span id="guard-label-1">GUARD 100%</span><div class="guard-track"><i id="guard-fill-1"></i></div></div></div>
+        </div>
+        <div class="stage-message" id="stage-message"><div class="message-tag" id="message-tag">THE MEETING CAN WAIT.</div><h2 id="message-title">LET’S DANCE.</h2><p id="message-copy">Add your faces below. Or jump in as these two legends.</p><button id="play" class="play-button">LET’S RUMBLE <span aria-hidden="true">ϟ</span></button></div>
+        <div id="countdown" class="countdown" aria-live="polite"></div>
+        <div class="arena-bottom"><span>☕ NO COLLEAGUES WERE HARMED.</span><span>100% UNPROFESSIONAL</span></div>
+      </div>
+      <div class="arena-footer"><span><b>THE RULES</b> Land hits to charge Chaos. Full meter = super on G / Right Shift.</span><span id="banter">HR HAS LEFT THE CHAT.</span></div>
+    </section>
+    <section class="players" aria-label="Fighter setup and controls">
+      <article class="player-card player-one"><div class="player-heading"><span class="player-number">01</span><div><label for="name-0">PLAYER ONE</label><input id="name-0" maxlength="22" value="The Overachiever" aria-label="Player one fighter name"></div><div class="portrait" id="portrait-0">☺</div></div><div class="player-bottom"><button class="camera-button" data-camera="0"><span aria-hidden="true">▣</span> Add your face</button><div class="keys"><div><kbd>W</kbd><span>JUMP</span></div><div><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>MOVE / GUARD</span></div><div class="punch-key"><kbd>F</kbd><span>PUNCH</span></div></div></div><button class="power-button power-0" id="power-0" title="A giant coffee. A serious caffeine crash. 5-second cooldown." disabled><kbd>G</kbd><span><b id="power-name-0">ESPRESSO EXPRESS</b><small id="power-detail-0">A giant coffee. A serious caffeine crash.</small></span><strong id="power-status-0">READY</strong></button><div class="defense-tools"><span><kbd>S</kbd> Hold: guard · Tap: parry</span><button id="dodge-0" class="dodge-button" disabled><kbd>E</kbd> DODGE <strong id="dodge-status-0">READY</strong></button></div></article>
+      <div class="versus" aria-hidden="true">VS<span>GOOD VIBES.<br>BAD MOVES.</span></div>
+      <article class="player-card player-two"><div class="player-heading"><span class="player-number">02</span><div><label for="name-1">PLAYER TWO</label><input id="name-1" maxlength="22" value="The Reply-All" aria-label="Player two fighter name"></div><div class="portrait" id="portrait-1">☺</div></div><div class="player-bottom"><button class="camera-button" data-camera="1"><span aria-hidden="true">▣</span> Add your face</button><div class="keys"><div><kbd>↑</kbd><span>JUMP</span></div><div><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><span>MOVE / GUARD</span></div><div class="punch-key"><kbd>↵</kbd><span>PUNCH</span></div></div></div><button class="power-button power-1" id="power-1" title="Five emails. Absolutely no unsubscribe. 5-second cooldown." disabled><kbd>R SHIFT</kbd><span><b id="power-name-1">REPLY-ALL APOCALYPSE</b><small id="power-detail-1">Five emails. Absolutely no unsubscribe.</small></span><strong id="power-status-1">READY</strong></button><div class="defense-tools"><span><kbd>↓</kbd> Hold: guard · Tap: parry</span><button id="dodge-1" class="dodge-button" disabled><kbd>.</kbd> DODGE <strong id="dodge-status-1">READY</strong></button></div></article>
+    </section>
+    <footer class="page-footer"><span>YOUR FACE. YOUR RIVAL. YOUR LUNCH BREAK.</span><span>Camera photos stay in this tab. Refresh to clear.</span></footer>
+    <p class="small-screen-note">Grab a keyboard and a friend — this game is made for two people on one computer.</p>
+    <p id="announcement" class="sr-only" aria-live="polite"></p>
+  </main>
+  <dialog id="camera-dialog" aria-labelledby="camera-title">
+    <div class="dialog-heading"><div><div class="eyebrow" id="camera-player">PLAYER ONE</div><h2 id="camera-title">Your game face.</h2></div><button id="close-camera" class="close-button" aria-label="Close camera">×</button></div>
+    <p class="camera-instructions">Center your face in the circle. The sillier, the better.</p>
+    <div class="camera-preview"><video id="camera-video" autoplay playsinline muted></video><div class="face-guide"></div><div id="camera-status" role="status">Starting camera…</div></div>
+    <label class="zoom-label" for="zoom">ZOOM <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1"><span id="zoom-value">1×</span></label>
+    <button id="capture" class="play-button" disabled>CAPTURE MY FACE</button><button id="retry-camera" class="text-button" hidden>Try camera again</button>
+    <p class="privacy-note">Live preview only. Nothing is recorded or uploaded.</p>
+  </dialog>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
